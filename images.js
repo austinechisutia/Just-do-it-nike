@@ -13,6 +13,14 @@ export const images = [
             image5: "images/green/5.jpeg",
             image6: "images/green/6.jpeg",
             image7: "images/green/7.png"
+        },
+        sizes: {
+            size1: "XS",
+            size2: "S",
+            size3: "M",
+            size4: "L",
+            size5: "XL",
+            size6: "XXL"
         }
         
     },
