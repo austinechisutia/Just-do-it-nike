@@ -1,22 +1,4 @@
-const images = [
-    {
-        id: 1,
-        imageName: "Blackres",
-        price: 100,
-        category: "resin",
-        description: "Black resin",
-        imagesContainerOne:{
-            image1: "images/green/1.jpeg",
-            image2: "images/green/2.jpeg",
-            image3: "images/green/3.jpeg",
-            image4: "images/green/4.jpeg",
-            image5: "images/green/5.jpeg",
-            image6: "images/green/6.jpeg",
-            image7: "images/green/7.png"
-        }
-        
-    }
-]
+import {images} from './images.js';
 
 const container = document.querySelector('.js-products-container');
 
