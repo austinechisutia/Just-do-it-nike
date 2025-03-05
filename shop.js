@@ -5,14 +5,14 @@ const images = [
         price: 100,
         category: "resin",
         description: "Black resin",
-        imagesContainer:{
-            image1: "images/green/1.jpg",
-            image2: "images/green/2.jpg",
-            image3: "images/green/3.jpg",
-            image4: "images/green/4.jpg",
-            image5: "images/green/5.jpg",
-            image6: "images/green/6.jpg",
-            image7: "images/green/7.jpg"
+        imagesContainerOne:{
+            image1: "images/green/1.jpeg",
+            image2: "images/green/2.jpeg",
+            image3: "images/green/3.jpeg",
+            image4: "images/green/4.jpeg",
+            image5: "images/green/5.jpeg",
+            image6: "images/green/6.jpeg",
+            image7: "images/green/7.png"
         }
         
     }
@@ -26,13 +26,29 @@ images.forEach((image)=>{
     containerHTML += `
         <div class="product-small">
           <div class="product-small-image">
-            <img src="${image.imagesContainer.image1}" alt="">
+            <img src="${image.imagesContainerOne.image7}" alt="">
           </div>
+          <div class="product-small-image">
+            <img src="${image.imagesContainerOne.image2}" alt="">
+          </div>
+          <div class="product-small-image">
+            <img src="${image.imagesContainerOne.image3}" alt="">
+          </div>
+          <div class="product-small-image">
+            <img src="${image.imagesContainerOne.image1}" alt="">
+          </div>
+          <div class="product-small-image">
+            <img src="${image.imagesContainerOne.image5}" alt="">
+          </div>
+          <div class="product-small-image">
+            <img src="${image.imagesContainerOne.image6}" alt="">
+          </div>
+          
           
         </div>
         <div class="product-image">
           <div class="image-product-container">
-            <img src="images/green/2.jpeg" alt="">
+            <img src="${image.imagesContainerOne.image1}" alt="">
           </div>
         </div>
         <div class="product-content">
@@ -43,10 +59,12 @@ images.forEach((image)=>{
           <div class="product-price">€24.99</div>
           <div class="product-content-image">
             <div class="product-content-image-one">
-              <img src="images/green/6.jpeg" alt="">
-              <img src="images/green/6.jpeg" alt="">
-              <img src="images/green/6.jpeg" alt="">
-              <img src="images/green/6.jpeg" alt="">
+              <img src="${image.imagesContainerOne.image1}" alt="">
+              <img src="${image.imagesContainerOne.image2}" alt="">
+              <img src="${image.imagesContainerOne.image3}" alt="">
+              <img src="${image.imagesContainerOne.image4}" alt="">
+              <img src="${image.imagesContainerOne.image4}" alt="">
+
 
 
 
@@ -72,5 +90,6 @@ images.forEach((image)=>{
           </div>
         </div>
     `
-})
+});
     
+container.innerHTML = containerHTML;
