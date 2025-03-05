@@ -25,29 +25,29 @@ let containerHTML = '';
 images.forEach((image)=>{
     containerHTML += `
         <div class="product-small">
-          <div class="product-small-image">
+          <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image7}" alt="">
           </div>
-          <div class="product-small-image">
+          <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image2}" alt="">
           </div>
-          <div class="product-small-image">
+          <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image3}" alt="">
           </div>
-          <div class="product-small-image">
+          <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image1}" alt="">
           </div>
-          <div class="product-small-image">
+          <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image5}" alt="">
           </div>
-          <div class="product-small-image">
+          <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image6}" alt="">
           </div>
           
           
         </div>
         <div class="product-image">
-          <div class="image-product-container">
+          <div class="image-product-container js-image-product-container">
             <img src="${image.imagesContainerOne.image1}" alt="">
           </div>
         </div>
@@ -58,7 +58,7 @@ images.forEach((image)=>{
           </div>
           <div class="product-price">€24.99</div>
           <div class="product-content-image">
-            <div class="product-content-image-one">
+            <div class="product-content-image-one js-product-content-image-one">
               <img src="${image.imagesContainerOne.image1}" alt="">
               <img src="${image.imagesContainerOne.image2}" alt="">
               <img src="${image.imagesContainerOne.image3}" alt="">
@@ -93,3 +93,18 @@ images.forEach((image)=>{
 });
     
 container.innerHTML = containerHTML;
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const productSmall = document.querySelectorAll('.js-product-small-image');
+  const productImage = document.querySelector('.js-image-product-container img');
+
+  if (productSmall.length > 0 && productImage) {
+      productSmall.forEach((smallImage) => {
+          smallImage.addEventListener('mouseover', () => {
+              const newSrc = smallImage.tagName === 'IMG' ? smallImage.src : smallImage.querySelector('img').src;
+              productImage.src = newSrc;
+          });
+      });
+  }
+});
