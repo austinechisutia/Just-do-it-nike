@@ -44,12 +44,12 @@ export const images = [
     },
     {
         id: 3,
-        imageName: "Red",
+        imageName: "White",
         price: 100,
         category: "resin",
         description: "Red resin",
         imagesContainerOne:{
-            image1: "images/red/1.jpeg",
+            image1: "images/white/white.jpeg",
             image2: "images/red/2.jpeg",
             image3: "images/red/3.jpeg",
             image4: "images/red/4.jpeg",

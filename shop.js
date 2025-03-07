@@ -92,3 +92,5 @@ const imageHTML = images.map((image)=>{
 }).join('');
 
 producuctContainer.innerHTML = imageHTML;
+
+
