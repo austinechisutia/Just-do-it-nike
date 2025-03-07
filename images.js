@@ -26,18 +26,19 @@ export const images = [
     },
     {
         id: 2,
-        imageName: "Blue",
+        imageName: "Black",
         price: 100,
         category: "resin",
         description: "Blue resin",
         imagesContainerOne:{
-            image1: "images/blue/1.jpeg",
-            image2: "images/blue/2.jpeg",
-            image3: "images/blue/3.jpeg",
-            image4: "images/blue/4.jpeg",
-            image5: "images/blue/5.jpeg",
-            image6: "images/blue/6.jpeg",
-            image7: "images/blue/7.png"
+            image1: "images/black/black1.png",
+            image2: "images/black/black2.png",
+            image3: "images/black/black3.png",
+            image4: "images/black/black4.png",
+            image5: "images/black/black5.png",
+            image6: "images/black/black6.png",
+            image7: "images/black/black7.png"
+            
         }
         
     },
