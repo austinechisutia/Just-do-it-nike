@@ -41,14 +41,6 @@ images.forEach((image)=>{
           <div class="product-price">€24.99</div>
           <div class="product-content-image">
             <div class="product-content-image-one js-product-content-image-one">
-              <img src="${image.imagesContainerOne.image1}" alt="">
-              <img src="${image.imagesContainerOne.image2}" alt="">
-              <img src="${image.imagesContainerOne.image3}" alt="">
-              <img src="${image.imagesContainerOne.image4}" alt="">
-              <img src="${image.imagesContainerOne.image4}" alt="">
-
-
-
 
             </div>
           </div>
@@ -90,3 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
+const producuctContainer = document.querySelector(".js-product-content-image-one");
+
+const imageHTML = images.map((image)=>{
+    return `
+        <img src="${image.imagesContainerOne.image1}" alt="">
+    `
+}).join('');
+
+producuctContainer.innerHTML = imageHTML;

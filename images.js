@@ -6,7 +6,7 @@ export const images = [
         category: "resin",
         description: "Black resin",
         imagesContainerOne:{
-            image1: "images/green/1.jpeg",
+            image1: "images/green/6.jpeg",
             image2: "images/green/2.jpeg",
             image3: "images/green/3.jpeg",
             image4: "images/green/4.jpeg",
