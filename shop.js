@@ -87,10 +87,17 @@ const producuctContainer = document.querySelector(".js-product-content-image-one
 
 const imageHTML = images.map((image)=>{
     return `
-        <img src="${image.imagesContainerOne.image1}" alt="">
+        <img class="js-image" src="${image.imagesContainerOne.image1}" alt="">
     `
 }).join('');
 
 producuctContainer.innerHTML = imageHTML;
 
+
+const jsImage = document.querySelectorAll('.js-image');  // error here
+jsImage.forEach((image)=>{
+  image.addEventListener("click", ()=>{
+    
+  })
+})
 
