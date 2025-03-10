@@ -72,12 +72,14 @@ container.innerHTML = containerHTML;
 document.addEventListener("DOMContentLoaded", () => {
   const productSmall = document.querySelectorAll('.js-product-small-image');
   const productImage = document.querySelector('.js-image-product-container img');
+  const jsImage = document.querySelectorAll('.js-image');  // error here
+
 
   if (productSmall.length > 0 && productImage) {
       productSmall.forEach((smallImage) => {
           smallImage.addEventListener('mouseover', () => {
-              const newSrc = smallImage.tagName === 'IMG' ? smallImage.src : smallImage.querySelector('img').src;
-              productImage.src = newSrc;
+              const smallImageSrc = smallImage.querySelector('img').getAttribute('src');
+              productImage.setAttribute('src', smallImageSrc);
           });
       });
   }
@@ -94,10 +96,5 @@ const imageHTML = images.map((image)=>{
 producuctContainer.innerHTML = imageHTML;
 
 
-const jsImage = document.querySelectorAll('.js-image');  // error here
-jsImage.forEach((image)=>{
-  image.addEventListener("click", ()=>{
-    
-  })
-})
+
 
