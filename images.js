@@ -66,13 +66,13 @@ export const images = [
         category: "resin",
         description: "Yellow resin",
         imagesContainerOne:{
-            image1: "images/yellow/1.jpeg",
-            image2: "images/yellow/2.jpeg",
-            image3: "images/yellow/3.jpeg",
-            image4: "images/yellow/4.jpeg",
-            image5: "images/yellow/5.jpeg",
-            image6: "images/yellow/6.jpeg",
-            image7: "images/yellow/7.png"
+            image1: "images/grey/grey1.jpeg",
+            image2: "images/grey/grey2.jpeg",
+            image3: "images/grey/grey3.jpeg",
+            image4: "images/grey/grey4.jpeg",
+            image5: "images/grey/grey5.jpeg",
+            image6: "images/grey/grey6.jpeg",
+            image7: "images/grey/grey7.png"
         }
         
     },
