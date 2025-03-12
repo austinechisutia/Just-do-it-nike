@@ -6,7 +6,7 @@ let containerHTML = '';
 
 images.forEach((image)=>{
     containerHTML += `
-        <div class="product-small" name="product-small-${image.id}">
+        <div class="product-small js-product-small" name="product-small-${image.id}">
           <div class="product-small-image js-product-small-image">
             <img src="${image.imagesContainerOne.image7}" alt="">
           </div>
@@ -100,6 +100,12 @@ producuctContainer.addEventListener('click', (e)=>{
     if(e.target.tagName === 'IMG'){
         document.querySelector('.js-image-product-container img').src = e.target.src;
     }
+});
+
+producuctContainer.addEventListener('click', (e)=>{
+  if(e.target.tagName === 'IMG'){
+      document.querySelector('.js-product-small img').src = e.target.src;
+  }
 });
 
 
