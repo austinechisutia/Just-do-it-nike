@@ -108,6 +108,11 @@ producuctContainer.addEventListener('click', (e)=>{
   }
 });
 
+const addBtn = document.querySelector('.js-add-to-cart');
+const cartBtn = document.querySelector('.js-cart');
+
+
+
 
 
 
