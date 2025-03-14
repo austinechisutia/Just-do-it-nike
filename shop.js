@@ -58,7 +58,7 @@ images.forEach((image)=>{
               <button class="bx">XL</button>
 
             </div>
-            <button class="product-sizes-button main">Add to Bag</button>
+            <button class="product-sizes-button main js-product">Add to Bag</button>
             <button class="product-sizes-button sub-main">Favourite</button>
 
           </div>
@@ -109,11 +109,12 @@ producuctContainer.addEventListener('click', (e)=>{
 });
 
 const addBtn = document.querySelector('.js-add-to-cart');
-const cartBtn = document.querySelector('.js-cart');
+const cartBtn = document.querySelector('.js-product');
 
-
-addBtn.addEventListener('click', ()=>{
-  
+let count = 0;
+cartBtn.addEventListener('click', ()=>{
+  count++;
+  addBtn.innerHTML = count;
 })
 
 
