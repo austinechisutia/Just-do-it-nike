@@ -112,7 +112,9 @@ const addBtn = document.querySelector('.js-add-to-cart');
 const cartBtn = document.querySelector('.js-cart');
 
 
-
+addBtn.addEventListener('click', ()=>{
+  
+})
 
 
 
