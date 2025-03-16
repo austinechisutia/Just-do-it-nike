@@ -98,7 +98,7 @@ producuctContainer.innerHTML = imageHTML;
 
 producuctContainer.addEventListener('click', (e)=>{
     if(e.target.tagName === 'IMG'){
-        document.querySelector('.js-image-product-container img').src = e.target.src;
+        document.querySelectorAll('.js-product-small').src = e.target.src;
     }
 });
 
