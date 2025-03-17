@@ -1,70 +1,107 @@
-import {images} from './images.js';
+import { images } from './images.js';
 
 const container = document.querySelector('.js-products-container');
 
 let containerHTML = '';
 
-images.forEach((image)=>{
+images.forEach((image) => {
     containerHTML += `
-        <div class="product-small js-product-small" name="product-small-${image.id}">
-          <div class="product-small-image js-product-small-image">
-            <img src="${image.imagesContainerOne.image7}" alt="">
-          </div>
-          <div class="product-small-image js-product-small-image">
-            <img src="${image.imagesContainerOne.image2}" alt="">
-          </div>
-          <div class="product-small-image js-product-small-image">
-            <img src="${image.imagesContainerOne.image3}" alt="">
-          </div>
-          <div class="product-small-image js-product-small-image">
-            <img src="${image.imagesContainerOne.image1}" alt="">
-          </div>
-          <div class="product-small-image js-product-small-image">
-            <img src="${image.imagesContainerOne.image5}" alt="">
-          </div>
-          <div class="product-small-image js-product-small-image">
-            <img src="${image.imagesContainerOne.image6}" alt="">
-          </div>
-          
-          
-        </div>
-        <div class="product-image">
-          <div class="image-product-container js-image-product-container">
-            <img src="${image.imagesContainerOne.image1}" alt="">
-          </div>
-        </div>
-        <div class="product-content">
-          <div class="product-title">Nike Sportswear Club</div>
-          <div class="product-subtitle">
-            Men's T-Shirt
-          </div>
-          <div class="product-price">€24.99</div>
-          <div class="product-content-image">
-            <div class="product-content-image-one js-product-content-image-one">
-
+        <div class="product-container" data-id="${image.id}">
+            <div class="product-small js-product-small">
+                ${Object.values(image.imagesContainerOne).map(img => `
+                    <div class="product-small-image js-product-small-image">
+                        <img src="${img}" alt="">
+                    </div>
+                `).join('')}
             </div>
-          </div>
-          <div class="product-sizes">
-            <div class="product-content-size-title">
-              <div class="product-content-size-title-one">Select Size</div>
-              <div class="product-content-size-title-two">Size Guide</div>
-
+            <div class="product-image">
+                <div class="image-product-container js-image-product-container">
+                    <img src="${image.imagesContainerOne.image1}" alt="">
+                </div>
             </div>
-            <div class="product-sizes-specific">
-              <button class="bx">XS</button>
-              <button class="bx">S</button>
-              <button class="bx">M</button>
-              <button class="bx">L</button>
-              <button class="bx">XL</button>
-
+            <div class="product-content">
+                <div class="product-title">${image.imageName}</div>
+                <div class="product-subtitle">Men's T-Shirt</div>
+                <div class="product-price">€24.99</div>
+                <div class="product-content-image">
+                    <div class="product-content-image-one js-product-content-image-one"></div>
+                </div>
+                <div class="product-sizes">
+                    <div class="product-content-size-title">
+                        <div class="product-content-size-title-one">Select Size</div>
+                        <div class="product-content-size-title-two">Size Guide</div>
+                    </div>
+                    <div class="product-sizes-specific">
+                        ${Object.values(image.sizes).map(size => `<button class="bx">${size}</button>`).join('')}
+                    </div>
+                    <button class="product-sizes-button main js-product">Add to Bag</button>
+                    <button class="product-sizes-button sub-main">Favourite</button>
+                </div>
             </div>
-            <button class="product-sizes-button main js-product">Add to Bag</button>
-            <button class="product-sizes-button sub-main">Favourite</button>
-
-          </div>
         </div>
-    `
+    `;
 });
+
+container.innerHTML = containerHTML;
+
+// Function to handle thumbnail and main image update
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.product-container').forEach((product) => {
+        const productSmallImages = product.querySelectorAll('.js-product-small-image img');
+        const productMainImage = product.querySelector('.js-image-product-container img');
+
+        productSmallImages.forEach((smallImage) => {
+            smallImage.addEventListener('mouseover', () => {
+                productMainImage.src = smallImage.src;
+            });
+        });
+    });
+});
+
+// Brand selection handling
+document.querySelectorAll('.brand-button').forEach((brand) => {
+    brand.addEventListener("click", () => {
+        const selectedBrandId = brand.dataset.brand;
+        const selectedBrand = images.find(image => image.id == selectedBrandId);
+
+        if (selectedBrand) {
+            const productContainer = document.querySelector('.js-products-container');
+            productContainer.innerHTML = `
+                <div class="product-container">
+                    <div class="product-small js-product-small">
+                        ${Object.values(selectedBrand.imagesContainerOne).map(img => `
+                            <div class="product-small-image js-product-small-image">
+                                <img src="${img}" alt="">
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="product-image">
+                        <div class="image-product-container js-image-product-container">
+                            <img src="${selectedBrand.imagesContainerOne.image1}" alt="">
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-title">${selectedBrand.imageName}</div>
+                        <div class="product-subtitle">Men's T-Shirt</div>
+                        <div class="product-price">€24.99</div>
+                        <div class="product-sizes">
+                            <div class="product-content-size-title">
+                                <div class="product-content-size-title-one">Select Size</div>
+                                <div class="product-content-size-title-two">Size Guide</div>
+                            </div>
+                            <div class="product-sizes-specific">
+                                ${Object.values(selectedBrand.sizes).map(size => `<button class="bx">${size}</button>`).join('')}
+                            </div>
+                            <button class="product-sizes-button main js-product">Add to Bag</button>
+                            <button class="product-sizes-button sub-main">Favourite</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    });
+});
+
     
 container.innerHTML = containerHTML;
 
