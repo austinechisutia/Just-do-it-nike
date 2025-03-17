@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+    display: flex;
+    gap: 20px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-section img, .right-section img {
+    width: 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.middle-section img {
+    width: 300px;
+    height: auto;
+}
+
+.brand {
+    width: 60px;
+    cursor: pointer;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="left-section variants">
+            <img src="../images/green/2.jpeg" class="variant">
+            <img src="../images/black/black3.png" class="variant">
+            <img src="../images/grey/grey2.jpeg" class="variant">
+        </div>
+        <div class="middle-section">
+            <img id="mainImage" src="../images/grey/grey2.jpeg">
+        </div>
+        <div class="right-section">
+            <img src="../images/grey/grey2.jpeg" class="brand" data-brand="brand1">
+            <img src="../images/grey/grey2.jpeg" class="brand" data-brand="brand2">
+            <img src="../images/grey/grey2.jpeg" class="brand" data-brand="brand3">
+        </div>
+    </div>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const brandImages = document.querySelectorAll(".brand"); // Brand images (right section)
+    const variantContainer = document.querySelector(".variants"); // Left section container
+    const mainImage = document.getElementById("mainImage"); // Middle image
+
+    const data = {
+        "brand1": ["img/brand1-1.jpg", "img/brand1-2.jpg", "img/brand1-3.jpg"],
+        "brand2": ["img/brand2-1.jpg", "img/brand2-2.jpg", "img/brand2-3.jpg"],
+        "brand3": ["img/brand3-1.jpg", "img/brand3-2.jpg", "img/brand3-3.jpg"]
+    };
+
+    brandImages.forEach(brand => {
+        brand.addEventListener("click", function () {
+            const brandKey = this.dataset.brand;
+            if (data[brandKey]) {
+                mainImage.src = data[brandKey][0]; // Set middle image
+                variantContainer.innerHTML = ""; // Clear existing variants
+
+                // Populate left section with variants
+                data[brandKey].forEach(src => {
+                    const img = document.createElement("img");
+                    img.src = src;
+                    img.classList.add("variant");
+                    img.addEventListener("click", function () {
+                        mainImage.src = this.src; // Update middle image
+                    });
+                    variantContainer.appendChild(img);
+                });
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>
