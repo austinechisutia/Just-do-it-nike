@@ -481,6 +481,7 @@ i{
   height: auto;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 .product-sizes-specific{
   display: flex;

@@ -1,4 +1,11 @@
+import { changeClothing } from './shop.js';
 
+window.changeClothing = changeClothing;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedStyle = localStorage.getItem("selectedClothing") || "green";
+  changeClothing(savedStyle);
+});
 
 window.onscroll = function() {myFunction()};
 
