@@ -4,11 +4,11 @@ const clothingStyle = {
         sizes: ["S", "M", "L", "XL"]
     },
     black: {
-        images: ["images/black/black1.png", "images/black/black2.png", "images/black/black3.png", "images/black/black4-logo.jpeg"],
+        images: ["images/black/black1.png", "images/black/black2.png", "images/black/white-vid.mp4", "images/black/black3.png", "images/black/black4-logo.jpeg", "images/black/black5.png", "images/black/black6.png", "images/black/black7.png"],
         sizes: ["XS", "S", "M", "L"]
     },
     grey: {
-        images: ["images/grey/grey1.jpeg", "images/grey/grey2.jpeg", "images/grey/grey3.png", "images/grey/grey4.jpeg"],
+        images: ["images/grey/grey-main.jpeg", "images/grey/grey1.jpeg", "images/grey/grey2.jpeg", "images/grey/grey3.png", "images/grey/grey4.jpeg", "images/grey/grey5.jpeg", "images/grey/grey6.jpeg"],
         sizes: ["M", "L", "XL"]
     },
     white: {
