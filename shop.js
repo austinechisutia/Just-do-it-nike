@@ -32,15 +32,17 @@ export function changeClothing(style) {
         return;
     }
 
-    // Add smooth fade transition
+    // Smooth fade transition for the main image
     mainImage.style.opacity = "0";
+    setTimeout(() => {
         mainImage.src = clothingStyle[style].images[0]; // First image of selected clothing
         mainImage.style.opacity = "1";
+    }, 50);
 
     // Save selection to localStorage
     localStorage.setItem("selectedClothing", style);
 
-    // Update styles panel
+    // Update styles panel (thumbnails)
     const stylesPanel = document.querySelector(".js-styles-panel");
     if (!stylesPanel) {
         console.error("Styles panel element not found.");
@@ -54,6 +56,7 @@ export function changeClothing(style) {
         img.src = imageSrc;
         img.alt = "Clothing style";
         img.classList.add("style-thumbnail");
+        img.loading = "lazy"; // Lazy load images
 
         // Change main image on hover
         img.onmouseover = () => {
@@ -63,39 +66,28 @@ export function changeClothing(style) {
         stylesPanel.appendChild(img);
     });
 
-    updateSizes(clothingStyle[style].sizes);
+    // Update size button styles
+    updateSizeStyles(clothingStyle[style].sizes);
 }
 
-// Restore last selected clothing from localStorage
-document.addEventListener("DOMContentLoaded", () => {
-    const savedStyle = localStorage.getItem("selectedClothing") || "green";
-    changeClothing(savedStyle);
-});
+// Function to update size button styles (add line and reduce opacity for unavailable sizes)
+function updateSizeStyles(availableSizes) {
+    const sizeButtons = document.querySelectorAll(".bx"); // Select all size buttons
 
-document.querySelectorAll(".js-icon").forEach(icon => {
-    icon.addEventListener("click", () => {
-        window.location.href = "index.html";
-    });
-});
+    sizeButtons.forEach(button => {
+        const size = button.textContent.trim(); // Get the size value
 
-function updateSizes(sizes) {
-    const sizeContainer = document.querySelector(".js-sizes"); // Select the size buttons container
-    if (!sizeContainer) {
-        console.error("Size container element not found.");
-        return;
-    }
-
-    sizeContainer.innerHTML = ""; // Clear previous sizes
-
-    sizes.forEach(size => {
-        let button = document.createElement("button");
-        button.classList.add("bx");
-        button.textContent = size;
-        button.addEventListener("click", () => {
-            console.log("Selected size:", size);
-        });
-
-        sizeContainer.appendChild(button);
+        if (availableSizes.includes(size)) {
+            // Size is available - normal styling
+            button.style.opacity = "1";
+            button.style.textDecoration = "none";
+            button.style.pointerEvents = "auto"; // Make it clickable
+        } else {
+            // Size is unavailable - add strikethrough and reduce opacity
+            button.style.opacity = "0.5";
+            button.style.textDecoration = "line-through";
+            button.style.pointerEvents = "none"; // Disable clicking
+        }
     });
 }
 
@@ -104,3 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedStyle = localStorage.getItem("selectedClothing") || "green";
     changeClothing(savedStyle);
 });
+
+
+let counter = 0; // Initialize counter
+
+// Define function globally
+window.incrementCounter = function () {
+    counter += 1; // Increase counter by 1
+    console.log("Counter:", counter); // Log new value
+
+    // Update UI
+    const counterDisplay = document.getElementById("counter-display");
+    if (counterDisplay) {
+        counterDisplay.textContent = counter;
+    }
+};
+
+incrementCounter(); // Call the function to increase the counter by 1
