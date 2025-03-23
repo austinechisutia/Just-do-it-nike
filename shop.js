@@ -98,12 +98,22 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-let counter = 0; // Initialize counter
+// Get counter from localStorage or start at 0
+let counter = localStorage.getItem("counter") ? parseInt(localStorage.getItem("counter")) : 0;
+
+// Update UI on page load
+window.onload = function () {
+    const counterDisplay = document.getElementById("counterDisplay");
+    if (counterDisplay) {
+        counterDisplay.textContent = counter;
+    }
+};
 
 // Define function globally
 window.incrementCounter = function () {
     counter += 1; // Increase counter by 1
-    console.log("Counter:", counter); // Log new value
+    localStorage.setItem("counter", counter); // Save new value in localStorage
+    console.log("Counter:", counter);
 
     // Update UI
     const counterDisplay = document.getElementById("counter-display");
@@ -111,5 +121,6 @@ window.incrementCounter = function () {
         counterDisplay.textContent = counter;
     }
 };
+
 
 incrementCounter(); // Call the function to increase the counter by 1
