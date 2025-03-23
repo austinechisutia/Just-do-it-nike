@@ -24,7 +24,7 @@ export function changeClothing(style) {
     setTimeout(() => {
         mainImage.src = clothingStyle[style][0]; // First image of selected clothing
         mainImage.style.opacity = "1";
-    }, 300);
+    }, 50);
 
     // Save selection to localStorage
     localStorage.setItem("selectedClothing", style);
