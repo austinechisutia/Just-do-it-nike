@@ -59,3 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedStyle = localStorage.getItem("selectedClothing") || "green";
     changeClothing(savedStyle);
 });
+
+document.querySelectorAll(".js-icon").forEach(icon => {
+    icon.addEventListener("click", () => {
+        window.location.href = "index.html";
+    });
+});
