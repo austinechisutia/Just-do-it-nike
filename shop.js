@@ -147,3 +147,33 @@ window.incrementCounter = function () {
 
 
 incrementCounter(); // Call the function to increase the counter by 1
+
+
+window.showCartPopup = function() {
+    setTimeout(() => {
+      const cartPopup = document.querySelector(".js-cart-added-items");
+      cartPopup.style.display = "block"; 
+
+        // Keep track of mouse state
+        let isMouseOver = false;
+
+        // When mouse enters the popup, prevent hiding
+        cartPopup.addEventListener("mouseenter", () => {
+            isMouseOver = true;
+        });
+
+        // When mouse leaves, allow hiding again
+        cartPopup.addEventListener("mouseleave", () => {
+            isMouseOver = false;
+        });
+  
+      setTimeout(() => {
+        cartPopup.style.display = "none"; 
+      }, 20000); // Hide after 10 seconds
+    }, 500); // Delay before appearing
+  }
+
+  window.hideCartPopup = function() {
+    document.querySelector(".js-cart-added-items").style.display = "none";
+  }
+

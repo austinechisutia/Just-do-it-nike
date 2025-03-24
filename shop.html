@@ -413,16 +413,16 @@
                 <button class="bx">XL</button>
   
               </div>
-              <button class="product-sizes-button main js-add-to-cart" onclick="incrementCounter()">Add to Bag</button>
+              <button class="product-sizes-button main js-add-to-cart" onclick="incrementCounter(); showCartPopup()">Add to Bag</button>
               <button class="product-sizes-button sub-main">Favourite</button>
   
             </div>
           </div>
         </div>
-        <div class="cart-added-items">
+        <div class="cart-added-items js-cart-added-items">
           <div class="cart-added-top">
             <div class="top-left">
-              <div class="cart-icon">
+              <div class="cart-icon tick">
                 <i class="ri-check-line"></i>
               </div>
               <div class="cart-added-top-content">
@@ -430,7 +430,7 @@
             </div>
             </div>
             <div class="top-right">
-              <div class="cart-icon">
+              <div class="cart-icon" onclick="hideCartPopup()">
                 <i class="ri-close-line js-close"></i>
               </div>
             </div>
@@ -443,11 +443,13 @@
               <p class="product-price">Nike Sportswear Club</p>
               <p class="product-subtitle">Men's T-shirt</p>
               <p class="product-subtitle">Size XS</p>
+              <div class="product-price">€24.99</div>
+
             </div>
           </div>
           <div class="cart-bottom">
-              <button class="product-sizes-button main js-add-to-cart" onclick="incrementCounter()">Add to Bag</button>
-              <button class="product-sizes-button sub-main">Favourite</button>
+            <button class="product-sizes-button sub-main">View Bag(2)</button>
+              <button class="product-sizes-button main js-add-to-cart" onclick="incrementCounter()">Checkout</button>
           </div>
         </div>
       </div>

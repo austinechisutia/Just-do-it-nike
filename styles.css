@@ -529,6 +529,53 @@ i{
   top: 0;
 }
 
+.cart-added-items{
+  position: absolute;
+  right: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #eeecec;
+  padding: 20px;
+  border-radius: 20px;
+  display: none;
+}
+
+.cart-added-top{
+  display: flex;
+  flex-direction: row;
+}
+.top-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+.cart-added-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-icon{
+  background-color: #6e6e6e;
+  padding: 1px;
+  border-radius: 50%;
+  color: #fff;
+}
+.tick{
+  background-color: #258d3c;
+}
+.cart-added-mid{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 20px;
+}
+.cart-added-mid img{
+  width: 200px;
+  height: auto;
+}
+
 
 @media screen and (max-width:700px) {
   body{
