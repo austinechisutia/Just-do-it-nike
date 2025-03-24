@@ -51,44 +51,43 @@ export function changeClothing(style) {
 
     clothingStyle[style].images.forEach(mediaSrc => {
         let mediaElement;
-
-         // Check the file extension to determine if it's an image or a video
-    if (mediaSrc.endsWith('.mp4') || mediaSrc.endsWith('.webm') || mediaSrc.endsWith('.ogg')) {
-        // Create a video element
-        mediaElement = document.createElement("video");
-        mediaElement.src = mediaSrc;
-        mediaElement.alt = "Clothing video";
-        mediaElement.classList.add("style-thumbnail");
-        mediaElement.loading = "lazy"; // Lazy load videos
-        mediaElement.muted = true; // Mute the video by default
-        mediaElement.loop = true; // Loop the video
-        mediaElement.preload = "metadata"; // Preload video metadata
-
-        // Change main image on hover
-        mediaElement.onmouseover = () => {
-            mainImage.src = mediaSrc; // You might want to handle this differently for videos
-            mainImage.style.display = "none"; // Hide the main image if you want to show the video
-            mediaElement.style.display = "block"; // Show the video
-            mediaElement.play(); // Play the video on hover
-        };
-    } else {
-        // Create an image element
-        mediaElement = document.createElement("img");
-        mediaElement.src = mediaSrc;
-        mediaElement.alt = "Clothing style";
-        mediaElement.classList.add("style-thumbnail");
-        mediaElement.loading = "lazy"; // Lazy load images
-
-        // Change main image on hover
-        mediaElement.onmouseover = () => {
-            mainImage.src = mediaSrc; // Change the main image to the hovered image
-            mainImage.style.display = "block"; // Show the main image
-            mediaElement.style.display = "none"; // Hide the image thumbnail
-        };
-    }
-
+    
+        if (mediaSrc.endsWith('.mp4') || mediaSrc.endsWith('.webm') || mediaSrc.endsWith('.ogg')) {
+            // Select the main video element
+            mediaElement = document.getElementById("mainVideo");
+            mediaElement.src = mediaSrc;
+            mediaElement.style.display = "none"; // Hide initially
+            mediaElement.load(); // Ensure it loads properly
+    
+            // Change main image on hover
+            mediaElement.onmouseover = () => {
+                document.getElementById("mainImage").style.display = "none"; // Hide image
+                mediaElement.style.display = "block"; // Show video
+                mediaElement.play(); // Play the video
+            };
+    
+            mediaElement.onmouseout = () => {
+                document.getElementById("mainImage").style.display = "block"; // Show image again
+                mediaElement.style.display = "none"; // Hide video
+                mediaElement.pause(); // Pause video
+            };
+        } else {
+            // Create an image element
+            mediaElement = document.createElement("img");
+            mediaElement.src = mediaSrc;
+            mediaElement.alt = "Clothing style";
+            mediaElement.classList.add("style-thumbnail");
+    
+            // Change main image on hover
+            mediaElement.onmouseover = () => {
+                document.getElementById("mainImage").src = mediaSrc; // Change image
+            };
+        }
+    
         stylesPanel.appendChild(mediaElement);
     });
+    
+    
 
     // Update size button styles
     updateSizeStyles(clothingStyle[style].sizes);
