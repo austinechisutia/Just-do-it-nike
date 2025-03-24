@@ -149,31 +149,40 @@ window.incrementCounter = function () {
 incrementCounter(); // Call the function to increase the counter by 1
 
 
-window.showCartPopup = function() {
-    setTimeout(() => {
-      const cartPopup = document.querySelector(".js-cart-added-items");
-      cartPopup.style.display = "block"; 
+window.showCartPopup = function () {
+    const cartPopup = document.querySelector(".js-cart-added-items");
+    const overlay = document.querySelector(".js-overlay");
 
-        // Keep track of mouse state
+    if (!cartPopup || !overlay) {
+        console.error("Cart popup or overlay element not found!");
+        return;
+    }
+
+    setTimeout(() => {
+        cartPopup.style.display = "block";  // Show popup
+        overlay.style.display = "block";    // Show overlay
+
         let isMouseOver = false;
 
-        // When mouse enters the popup, prevent hiding
-        cartPopup.addEventListener("mouseenter", () => {
-            isMouseOver = true;
-        });
+        // Prevent hiding when mouse is over popup
+        cartPopup.addEventListener("mouseenter", () => isMouseOver = true);
+        cartPopup.addEventListener("mouseleave", () => isMouseOver = false);
 
-        // When mouse leaves, allow hiding again
-        cartPopup.addEventListener("mouseleave", () => {
-            isMouseOver = false;
-        });
-  
-      setTimeout(() => {
-        cartPopup.style.display = "none"; 
-      }, 20000); // Hide after 10 seconds
+        // Hide popup & overlay after 10 sec if mouse is not over popup
+        setTimeout(() => {
+            if (!isMouseOver) {
+                cartPopup.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }, 10000);
+
     }, 500); // Delay before appearing
-  }
+};
 
-  window.hideCartPopup = function() {
+// Function to manually hide the popup and overlay when clicking outside
+document.querySelector(".js-overlay").addEventListener("click", function () {
     document.querySelector(".js-cart-added-items").style.display = "none";
-  }
+    this.style.display = "none";
+});
+
 
