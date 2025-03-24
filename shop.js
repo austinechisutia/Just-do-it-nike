@@ -34,10 +34,8 @@ export function changeClothing(style) {
 
     // Smooth fade transition for the main image
     mainImage.style.opacity = "0";
-    setTimeout(() => {
         mainImage.src = clothingStyle[style].images[0]; // First image of selected clothing
         mainImage.style.opacity = "1";
-    }, 50);
 
     // Save selection to localStorage
     localStorage.setItem("selectedClothing", style);
@@ -51,19 +49,45 @@ export function changeClothing(style) {
 
     stylesPanel.innerHTML = ""; // Clear previous styles
 
-    clothingStyle[style].images.forEach(imageSrc => {
-        let img = document.createElement("img");
-        img.src = imageSrc;
-        img.alt = "Clothing style";
-        img.classList.add("style-thumbnail");
-        img.loading = "lazy"; // Lazy load images
+    clothingStyle[style].images.forEach(mediaSrc => {
+        let mediaElement;
+
+         // Check the file extension to determine if it's an image or a video
+    if (mediaSrc.endsWith('.mp4') || mediaSrc.endsWith('.webm') || mediaSrc.endsWith('.ogg')) {
+        // Create a video element
+        mediaElement = document.createElement("video");
+        mediaElement.src = mediaSrc;
+        mediaElement.alt = "Clothing video";
+        mediaElement.classList.add("style-thumbnail");
+        mediaElement.loading = "lazy"; // Lazy load videos
+        mediaElement.muted = true; // Mute the video by default
+        mediaElement.loop = true; // Loop the video
+        mediaElement.preload = "metadata"; // Preload video metadata
 
         // Change main image on hover
-        img.onmouseover = () => {
-            mainImage.src = imageSrc;
+        mediaElement.onmouseover = () => {
+            mainImage.src = mediaSrc; // You might want to handle this differently for videos
+            mainImage.style.display = "none"; // Hide the main image if you want to show the video
+            mediaElement.style.display = "block"; // Show the video
+            mediaElement.play(); // Play the video on hover
         };
+    } else {
+        // Create an image element
+        mediaElement = document.createElement("img");
+        mediaElement.src = mediaSrc;
+        mediaElement.alt = "Clothing style";
+        mediaElement.classList.add("style-thumbnail");
+        mediaElement.loading = "lazy"; // Lazy load images
 
-        stylesPanel.appendChild(img);
+        // Change main image on hover
+        mediaElement.onmouseover = () => {
+            mainImage.src = mediaSrc; // Change the main image to the hovered image
+            mainImage.style.display = "block"; // Show the main image
+            mediaElement.style.display = "none"; // Hide the image thumbnail
+        };
+    }
+
+        stylesPanel.appendChild(mediaElement);
     });
 
     // Update size button styles
