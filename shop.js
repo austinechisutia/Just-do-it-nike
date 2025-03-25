@@ -180,9 +180,11 @@ window.showCartPopup = function () {
 };
 
 // Function to manually hide the popup and overlay when clicking outside
-document.querySelector(".js-overlay, .js-close").addEventListener("click", function () {
-    document.querySelector(".js-cart-added-items").style.display = "none";
-    this.style.display = "none";
+document.querySelectorAll(".js-overlay, .js-close").forEach(element => {
+    element.addEventListener("click", function () {
+        document.querySelector(".js-cart-added-items").style.display = "none";
+        document.querySelector(".js-overlay").style.display = "none";
+    });
 });
 
 
