@@ -134,7 +134,7 @@ window.onload = function () {
 
 // Define function globally
 window.incrementCounter = function () {
-    counter += 1; // Increase counter by 1
+    counter ++; // Increase counter by 1
     localStorage.setItem("counter", counter); // Save new value in localStorage
     console.log("Counter:", counter);
 
@@ -186,5 +186,8 @@ document.querySelectorAll(".js-overlay, .js-close").forEach(element => {
         document.querySelector(".js-overlay").style.display = "none";
     });
 });
+
+
+
 
 
