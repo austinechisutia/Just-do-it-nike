@@ -1,19 +1,26 @@
 const clothingStyle = {
     green: {
         images: ["images/green/1.jpeg", "images/green/2.jpeg", "images/green/3.jpeg", "images/green/4.jpeg", "images/green/5.jpeg", "images/green/6.jpeg", "images/green/7.png"],
-        sizes: ["S", "M", "L", "XL"]
+        sizes: ["S", "M", "L", "XL"],
+        prize: "€24.99"
     },
     black: {
         images: ["images/black/black1.png", "images/black/black2.png", "images/black/black3.png", "images/black/black4-logo.jpeg", "images/black/black5.png", "images/black/black6.png", "images/black/black7.png"],
-        sizes: ["XS", "S", "M", "L"]
+        sizes: ["XS", "S", "M", "L"],
+        prize: "€18.99"
+
     },
     grey: {
         images: ["images/grey/grey-main.jpeg", "images/grey/grey1.jpeg", "images/grey/grey2.jpeg", "images/grey/grey3.png", "images/grey/grey4.jpeg", "images/grey/grey5.jpeg", "images/grey/grey6.jpeg"],
-        sizes: ["M", "L", "XL"]
+        sizes: ["M", "L", "XL"],
+        prize: "€19.99"
+
     },
     white: {
         images: ["images/white/white.jpeg", "images/white/white2.jpeg", "images/white/white-3.jpeg", "images/white/white4.png", "images/white/qhite5.jpeg"],
-        sizes: ["XS", "S", "M", "L", "XL"]
+        sizes: ["XS", "S", "M", "L", "XL"],
+        prize: "€5.99"
+
     }
 };
 
@@ -186,6 +193,8 @@ document.querySelectorAll(".js-overlay, .js-close").forEach(element => {
         document.querySelector(".js-overlay").style.display = "none";
     });
 });
+
+const changePrice = document.querySelector(".js-products-container");
 
 
 
