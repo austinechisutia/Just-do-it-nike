@@ -1,4 +1,4 @@
-# **Nike Revermb**
+# Nike Revermb
 
 ## **Overview**
 Welcome to the Nike Revermb project! This repository is dedicated to the innovative development and seamless integration of the *Revermb* product line, pushing the boundaries of performance and design. Whether you’re a developer, designer, or athlete, this repository will help you build, enhance, and contribute to Nike’s cutting-edge technology and digital experience.
